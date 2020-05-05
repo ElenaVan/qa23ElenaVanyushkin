@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'Lena'
+group 'Elena'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
@@ -15,6 +15,7 @@ dependencies {
     implementation  'org.seleniumhq.selenium:selenium-java:3.141.59'
     implementation 'org.testng:testng:7.1.0'
 }
-test {
+ test{
     useTestNG()
+
 }

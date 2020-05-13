@@ -3,6 +3,7 @@ package com.qa.trello.tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -23,6 +24,8 @@ public class BoardCreationTests {
     @Test
     public void testBoardCreation() {
 
+
+     int before = getBoardsCount();
         initLogin();
         fillLoginForm("vanyushkinelena@gmail.com", "felia161075");
         confirmLogin();
@@ -30,9 +33,13 @@ public class BoardCreationTests {
         fillBoardForm("Test", "[title='blue']");
         confirmBoardCreation();
         returnToHomePage();
+        int after = getBoardsCount();
+       // Assert.assertEquals(after, before +1);
 
 
     }
+    public int getBoardsCount() {
+        return wd.findElements(By.xpath("//*[@class='icon-lg icon-member']/../../..//li")).size()-1;}
 
     public void returnToHomePage() {
         clic(By.cssSelector("[class='_2BQG4yPMt5s_hu _2hgn5meZL7bJdx _1ctYJ9-gOV_hrm _3Xj1tqB73NcWn3']"));

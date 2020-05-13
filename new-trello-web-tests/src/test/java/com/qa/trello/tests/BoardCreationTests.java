@@ -3,18 +3,19 @@ package com.qa.trello.tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class BoardCreationTests<locator> extends TestBase {
+import java.util.concurrent.TimeUnit;
+
+public class BoardCreationTests {
     WebDriver wd;
 
     @BeforeMethod
 
     public void setUp() {
         wd = new ChromeDriver();
-        // wd.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+       wd.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         wd.manage().window().maximize();
         wd.navigate().to("https://trello.com/");
     }
@@ -25,8 +26,33 @@ public class BoardCreationTests<locator> extends TestBase {
         initLogin();
         fillLoginForm("vanyushkinelena@gmail.com", "felia161075");
         confirmLogin();
+        initBoardCreation();
+        fillBoardForm("Test", "[title='blue']");
+        confirmBoardCreation();
+        returnToHomePage();
 
 
+    }
+
+    public void returnToHomePage() {
+        clic(By.cssSelector("[class='_2BQG4yPMt5s_hu _2hgn5meZL7bJdx _1ctYJ9-gOV_hrm _3Xj1tqB73NcWn3']"));
+        clic(By.cssSelector("[class='_2BQG4yPMt5s_hu _2hgn5meZL7bJdx _1ctYJ9-gOV_hrm _3Xj1tqB73NcWn3']"));
+    }
+
+    public void fillBoardForm(String nameOfBoard, String colorOfBoard) {
+        type(By.cssSelector("[data-test-id='create-board-title-input']"), nameOfBoard);
+        clic(By.cssSelector("button.W6rMLOx8U0MrPx"));
+        clic(By.xpath("//li[1]/button[@class='_2jR0BZMM5cBReR']"));
+        clic(By.cssSelector(colorOfBoard));
+    }
+
+    public void confirmBoardCreation() {
+        clic(By.cssSelector("[class='_3UeOvlU6B5KUnS uj9Ovoj4USRUQz _2MgouXHqRQDP_5']"));
+    }
+
+    public void initBoardCreation() {
+        clic(By.name("add"));
+        clic(By.cssSelector("[data-test-id='header-create-board-button']"));
     }
 
     public void confirmLogin() {
@@ -49,7 +75,7 @@ public class BoardCreationTests<locator> extends TestBase {
     }
 
     public void clic(By locator) {
-        wd.findElement(locator);
+        wd.findElement(locator).click();
     }
 
   //  @AfterMethod

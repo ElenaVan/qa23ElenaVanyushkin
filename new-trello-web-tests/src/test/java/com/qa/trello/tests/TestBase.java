@@ -1,6 +1,7 @@
 package com.qa.trello.tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -15,6 +16,10 @@ public class TestBase {
     @BeforeMethod
 
     public void setUp() {
+        init();
+    }
+
+    public void init() {
         wd = new ChromeDriver();
         wd.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         wd.manage().window().maximize();
@@ -74,6 +79,10 @@ public class TestBase {
 
       @AfterMethod
     public void tearDown() {
+          stop();
+      }
+
+    public void stop() {
         wd.quit();
     }
 
@@ -148,6 +157,17 @@ public class TestBase {
 
     public void openFirstTeam() {
     }
+    public void changeName() {
+
+        wd.findElement(By.cssSelector(".js-rename-board")).click();
+
+        wd.findElement(By.cssSelector("input.js-board-name-input")).sendKeys("ggg" + Keys.ENTER);
+
+    }
 
 
+    public boolean isOnBoardsPage(){
+        String url = wd.getCurrentUrl();
+        return url.contains("boards");
+    }
 }

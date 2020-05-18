@@ -7,9 +7,9 @@ public class BoardCreationTests extends TestBase{
 
     @Test
     public void testBoardCreation() {
-     int before = getBoardsCount();
-        createBoard();
-        int after = getBoardsCount();
+     int before = app.getBoard().getBoardsCount();
+        app.getBoard().createBoard();
+        int after = app.getBoard().getBoardsCount();
       Assert.assertEquals(after,before+1);
 
 

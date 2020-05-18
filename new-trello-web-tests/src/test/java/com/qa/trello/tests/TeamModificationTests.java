@@ -6,7 +6,7 @@ public class TeamModificationTests extends TestBase {
 
 @Test
 public void TestTeamModification(){
-
+app.getTeam().openTeamSettings();
         }
         }
 

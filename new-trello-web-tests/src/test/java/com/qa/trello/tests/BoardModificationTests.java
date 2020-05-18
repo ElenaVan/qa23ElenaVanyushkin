@@ -7,19 +7,22 @@ import org.testng.annotations.Test;
 public class BoardModificationTests extends TestBase {
 @BeforeMethod
 public void ensurePreconditions(){
-    if(!isOnBoardsPage()){
-        click(By.cssSelector("[href$=boards]"));
+    if(!app.getBoard().isOnBoardsPage()){
+        app.getBoard().openBoardsPage();
 
     }
-    if(getBoardsCount()==0){
-        createBoard();
+    if(app.getBoard().getBoardsCount()==0){
+        app.getBoard().createBoard();
     }
 }
-@Test
+
+
+
+    @Test
     public void testBoardNameMOdification(){
-    openFirstPersonalBoard();
-    changeName();
-    returnToHomePage();
+    app.getBoard().openFirstPersonalBoard();
+    app.getBoard().changeName();
+    app.getBoard().returnToHomePage();
 
 }
 

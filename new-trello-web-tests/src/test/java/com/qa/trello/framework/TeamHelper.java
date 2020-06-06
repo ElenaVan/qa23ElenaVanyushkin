@@ -10,22 +10,22 @@ public class TeamHelper extends HelperBase{
 
     public void fillForm(String nameOfTeam, By locatorTeamType) {
         type(By.cssSelector("[class='_1CLyNodCAa-vQi']"), nameOfTeam);
-        click(By.id("teamTypeSelect"));
-        click(locatorTeamType);
+        waitForElementLocatedAndClick(By.id("teamTypeSelect"),20);
+        waitForElementLocatedAndClick(locatorTeamType, 20);
     }
 
     public void confirmTeamCreation() {
-        click(By.cssSelector("[type='submit']"));
-        click(By.cssSelector("[class='eg0KI5SqghoOFd']"));
+        waitForElementLocatedAndClick(By.cssSelector("[type='submit']"),20);
+        waitForElementLocatedAndClick(By.cssSelector("[class='eg0KI5SqghoOFd']"),20);
     }
 
     public void initTeamCreation() {
-        click(By.cssSelector("[class='icon-add icon-sm _2aV_KY1gTq1qWc']"));
+        waitForElementLocatedAndClick(By.cssSelector("[class='icon-add icon-sm _2aV_KY1gTq1qWc']"),20);
     }
 
     public void inviteTeamLater() {
         if (isElementPresent(By.cssSelector("[data-test-id=show-later-button]"))) {
-            click(By.cssSelector("[data-test-id=show-later-button]"));
+            waitForElementLocatedAndClick(By.cssSelector("[data-test-id=show-later-button]"),20);
         }
     }
 

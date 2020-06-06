@@ -14,21 +14,25 @@ public class BoardHelper extends HelperBase {
        return wd.findElements(By.xpath("//*[@class='icon-lg icon-member']/../../..//li")).size() - 1;
       //  return wd.findElements(By.xpath("//div[@class='all-boards']//li[1]//a[1]")).size()-1;
     }
+    public void goToBoardsPageUrl(String username){
+
+        wd.navigate().to("https://trello.com/"+username+"/boards");
+    }
 
     public void fillBoardForm(String nameOfBoard, String colorOfBoard) {
         type(By.cssSelector("[data-test-id='create-board-title-input']"), nameOfBoard);
-        click(By.cssSelector("button.W6rMLOx8U0MrPx"));
-        click(By.xpath("//li[1]/button[@class='_2jR0BZMM5cBReR']"));
-        click(By.cssSelector(colorOfBoard));
+        waitForElementLocatedAndClick(By.cssSelector("button.W6rMLOx8U0MrPx"),20);
+        waitForElementLocatedAndClick(By.xpath("//li[1]/button[@class='_2jR0BZMM5cBReR']"),20);
+        waitForElementLocatedAndClick(By.cssSelector(colorOfBoard),20);
     }
 
     public void confirmBoardCreation() {
-        click(By.cssSelector("[class='_3UeOvlU6B5KUnS uj9Ovoj4USRUQz _2MgouXHqRQDP_5']"));
+        waitForElementLocatedAndClick(By.cssSelector("[class='_3UeOvlU6B5KUnS uj9Ovoj4USRUQz _2MgouXHqRQDP_5']"),20);
     }
 
     public void initBoardCreation() {
-        click(By.name("add"));
-        click(By.cssSelector("[data-test-id='header-create-board-button']"));
+        waitForElementLocatedAndClick(By.name("add"),20);
+        waitForElementLocatedAndClick(By.cssSelector("[data-test-id='header-create-board-button']"),20);
     }
 
     public void createBoard() {
@@ -40,15 +44,15 @@ public class BoardHelper extends HelperBase {
 
     public void clickMoreButton() {
 
-        click(By.cssSelector(".js-open-more"));
+        waitForElementLocatedAndClick(By.cssSelector(".js-open-more"),20);
     }
 
     public void confirm() {
-        click(By.cssSelector(".js-confirm"));
+        waitForElementLocatedAndClick(By.cssSelector(".js-confirm"),20);
     }
 
     public void clickCloseBoardFromMoreMenu() {
-        click(By.cssSelector(".js-close-board"));
+        waitForElementLocatedAndClick(By.cssSelector(".js-close-board"),20);
     }
 
     public void initBoardDeletionInMoreMenu() {
@@ -57,13 +61,13 @@ public class BoardHelper extends HelperBase {
     }
 
     public void permanentlyDeleteBoard() {
-        click(By.cssSelector(".js-delete"));
+        waitForElementLocatedAndClick(By.cssSelector(".js-delete"),20);
         confirm();
     }
 
     public void openFirstPersonalBoard(){
       //  click(By.xpath("//div[@class='all-boards']//div[2]//div[2]//ul[1]//li[1]"));
-        click(By.xpath("//div[@class='all-boards']//li[1]//a[1]"));
+        waitForElementLocatedAndClick(By.xpath("//div[@class='all-boards']//li[1]//a[1]"),30);
     }
 
     public void changeName() {
@@ -74,12 +78,13 @@ public class BoardHelper extends HelperBase {
 
     }
 
-    public boolean isOnBoardsPage(){
+    public boolean isOnBoardsPage() throws InterruptedException{
+        Thread.sleep(3000);
         String url = wd.getCurrentUrl();
         return url.contains("boards");
     }
     public void openBoardsPage() {
-       click(By.cssSelector("[href$=boards]"));
+       waitForElementLocatedAndClick(By.cssSelector("[href$=boards]"),30);
     }
 
 }

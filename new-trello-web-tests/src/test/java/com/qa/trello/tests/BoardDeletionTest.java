@@ -7,10 +7,10 @@ import org.testng.annotations.Test;
 
 public class BoardDeletionTest extends TestBase {
 @BeforeMethod
-public void ensurePreconditions(){
+public void ensurePreconditions() throws InterruptedException {
     if(!app.getBoard().isOnBoardsPage()){
-        app.getBoard().click(By.cssSelector("[href$=boards]"));
-
+        app.getBoard().goToBoardsPageUrl("lenavanyushkina");
+        //app.getBoard().waitForElementLocatedAndClick(By.cssSelector("[href$=boards]"));
     }
     if(app.getBoard().getBoardsCount()==0){
         app.getBoard().createBoard();

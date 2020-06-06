@@ -9,7 +9,7 @@ public class SessionHelper extends HelperBase{
     }
 
     public void confirmLogin() {
-        click(By.id("login"));
+        waitForElementLocatedAndClick(By.id("login"),20);
     }
 
     public void fillLoginForm(String userEmail, String password) {
@@ -18,7 +18,7 @@ public class SessionHelper extends HelperBase{
     }
 
     public void initLogin() {
-        click(By.cssSelector("[href='/login']"));
+        waitForElementLocatedAndClick(By.cssSelector("[href='login']"),20);
     }
 
     public void login(String email, String password) {

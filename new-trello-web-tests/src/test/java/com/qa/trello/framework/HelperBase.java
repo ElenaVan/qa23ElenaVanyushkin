@@ -18,12 +18,15 @@ public class HelperBase {
         wd.findElement(locator).clear();
         wd.findElement(locator).sendKeys(text);
     }
+    public void clic(By locator){
+       wd.findElement(locator).click();
+    }
 
     public void waitForElementLocatedAndClick(By locator, int timeOut) {
-        new WebDriverWait(wd, timeOut).until(ExpectedConditions.presenceOfElementLocated(locator)).click();
+        new WebDriverWait(wd, 0).until(ExpectedConditions.presenceOfElementLocated(locator)).click();
     }
     public void waitForElementClickableAndClick(By locator, int timeOut) {
-        new WebDriverWait(wd, timeOut).until(ExpectedConditions.elementToBeClickable(locator)).click();
+        new WebDriverWait(wd, 1).until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
     public boolean isElementPresent(By locator) {
@@ -31,7 +34,7 @@ public class HelperBase {
         }
 
     public void returnToHomePage(){
-        waitForElementClickableAndClick(By.xpath("//span[@name='house']"), 0);
-        waitForElementLocatedAndClick(By.xpath("//span[@name='house']"),0);
+       clic(By.xpath("//span[@name='house']"));
+      // clic(By.xpath("//span[@name='house']"));
     }
 }

@@ -8,8 +8,13 @@ public class SessionHelper extends HelperBase{
         super(wd);
     }
 
+    public void login(String email, String password) {
+        initLogin();
+        fillLoginForm(email, password);
+        confirmLogin();
+    }
     public void confirmLogin() {
-        waitForElementLocatedAndClick(By.id("login"),20);
+        clic(By.id("login"));
     }
 
     public void fillLoginForm(String userEmail, String password) {
@@ -18,12 +23,8 @@ public class SessionHelper extends HelperBase{
     }
 
     public void initLogin() {
-        waitForElementLocatedAndClick(By.cssSelector("[href='login']"),20);
+      clic(By.cssSelector("[href='/login']"));
     }
 
-    public void login(String email, String password) {
-        initLogin();
-        fillLoginForm(email, password);
-        confirmLogin();
-    }
+
 }

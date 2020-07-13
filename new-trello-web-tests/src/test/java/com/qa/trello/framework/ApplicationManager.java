@@ -32,7 +32,8 @@ public class ApplicationManager {
             wd.manage().window().maximize();
             wd.navigate().to("https://trello.com/");
             session = new SessionHelper(wd);
-            session.login("vanyushkinelena@gmail.com", "felia161075");
+            session.login("vanyushkinelena@gmail.com", "ElenaVan");
+
 
             board = new BoardHelper(wd);
             team = new TeamHelper(wd);

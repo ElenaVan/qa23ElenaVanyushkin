@@ -1,0 +1,6 @@
+13:21:22.474 [main] INFO  com.qa.trello.tests.TestBase - Start testtestBoardCreationwith parameters: [aaaa, No team]
+13:21:53.496 [main] INFO  com.qa.trello.tests.TestBase - Stop testtestBoardCreation
+13:21:53.496 [main] INFO  com.qa.trello.tests.TestBase - Start testtestBoardCreationwith parameters: [111111, No team]
+13:21:59.544 [main] INFO  com.qa.trello.tests.TestBase - Stop testtestBoardCreation
+13:21:59.544 [main] INFO  com.qa.trello.tests.TestBase - Start testtestBoardCreationwith parameters: [huhuhuhh, No team]
+13:22:05.586 [main] INFO  com.qa.trello.tests.TestBase - Stop testtestBoardCreation

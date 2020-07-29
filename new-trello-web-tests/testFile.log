@@ -1,0 +1,10 @@
+12702 [main] INFO  com.qa.trello.tests.TestBase - Start testtestBoardDeletion
+21899 [main] INFO  com.qa.trello.tests.TestBase - Stop testtestBoardDeletion
+12:20:32.473 [main] INFO  com.qa.trello.tests.TestBase - Start testtestBoardCreation
+12:21:01.154 [main] INFO  com.qa.trello.tests.TestBase - Stop testtestBoardCreation
+12:21:01.155 [main] INFO  com.qa.trello.tests.TestBase - Start testtestBoardCreation
+12:21:07.201 [main] INFO  com.qa.trello.tests.TestBase - Stop testtestBoardCreation
+12:21:07.201 [main] INFO  com.qa.trello.tests.TestBase - Start testtestBoardCreation
+12:21:13.242 [main] INFO  com.qa.trello.tests.TestBase - Stop testtestBoardCreation
+12:24:35.526 [main] INFO  com.qa.trello.tests.TestBase - Start testtestBoardDeletion
+12:24:58.017 [main] INFO  com.qa.trello.tests.TestBase - Stop testtestBoardDeletion

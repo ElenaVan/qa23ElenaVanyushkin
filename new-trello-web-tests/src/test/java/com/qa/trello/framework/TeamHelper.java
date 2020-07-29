@@ -8,10 +8,19 @@ public class TeamHelper extends HelperBase{
         super(wd);
     }
 
-    public void fillForm(String nameOfTeam, By locatorTeamType) {
-        type(By.cssSelector("[class='_1CLyNodCAa-vQi']"), nameOfTeam);
+    public void fillForm(String name, By locatorTeamType) {
+        typeNameOfTeam(name);
+        selectTeamType(locatorTeamType);
+
+    }
+
+    public void selectTeamType(By locatorTeamType) {
         waitForElementLocatedAndClick(By.id("teamTypeSelect"),20);
         waitForElementLocatedAndClick(locatorTeamType, 20);
+    }
+
+    public void typeNameOfTeam(String name) {
+        type(By.cssSelector("[class='_1CLyNodCAa-vQi']"), name);
     }
 
     public void confirmTeamCreation() {

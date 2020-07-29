@@ -1,5 +1,6 @@
 package com.qa.trello.framework;
 
+import com.qa.model.Board;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -19,11 +20,19 @@ public class BoardHelper extends HelperBase {
         wd.navigate().to("https://trello.com/"+username+"/boards");
     }
 
-    public void fillBoardForm(String nameOfBoard, String colorOfBoard) {
-        type(By.cssSelector("[data-test-id='create-board-title-input']"), nameOfBoard);
-        waitForElementLocatedAndClick(By.cssSelector("button.W6rMLOx8U0MrPx"),20);
-        waitForElementLocatedAndClick(By.xpath("//li[1]/button[@class='_2jR0BZMM5cBReR']"),20);
-        waitForElementLocatedAndClick(By.cssSelector(colorOfBoard),20);
+    public void fillBoardForm(Board board) {
+        typeBoardName(board.getName());
+        selectTeamFromBoardCreationForm(board.getTeam());
+        click(By.cssSelector("[title="+board.getColor()+"]"));
+    }
+
+    public void typeBoardName(String name) {
+        type(By.cssSelector("[data-test-id='create-board-title-input']"), name);
+    }
+
+    public void selectTeamFromBoardCreationForm(String team) {
+       click(By.cssSelector("button.W6rMLOx8U0MrPx"));
+        click(By.xpath("//span[contains(text(),'" + team + "')]")); ;
     }
 
     public void confirmBoardCreation() {
@@ -37,7 +46,10 @@ public class BoardHelper extends HelperBase {
 
     public void createBoard() {
         initBoardCreation();
-        fillBoardForm("Test", "[title='blue']");
+        fillBoardForm(new Board()
+                .withName("Test")
+                .withTeam("No team")
+                .withColor("blue"));
         confirmBoardCreation();
         returnToHomePage();
     }

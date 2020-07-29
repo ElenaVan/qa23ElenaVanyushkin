@@ -14,7 +14,7 @@ public class SessionHelper extends HelperBase{
         confirmLogin();
     }
     public void confirmLogin() {
-        clic(By.id("login"));
+        click(By.id("login"));
     }
 
     public void fillLoginForm(String userEmail, String password) {
@@ -23,7 +23,7 @@ public class SessionHelper extends HelperBase{
     }
 
     public void initLogin() {
-      clic(By.cssSelector("[href='/login']"));
+      click(By.cssSelector("[href='/login']"));
     }
 
 

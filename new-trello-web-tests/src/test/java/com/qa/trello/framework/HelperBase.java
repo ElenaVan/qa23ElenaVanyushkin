@@ -18,7 +18,7 @@ public class HelperBase {
         wd.findElement(locator).clear();
         wd.findElement(locator).sendKeys(text);
     }
-    public void clic(By locator){
+    public void click(By locator){
        wd.findElement(locator).click();
     }
 
@@ -34,7 +34,7 @@ public class HelperBase {
         }
 
     public void returnToHomePage(){
-       clic(By.xpath("//span[@name='house']"));
-      // clic(By.xpath("//span[@name='house']"));
+       click(By.xpath("//span[@name='house']"));
+
     }
 }
